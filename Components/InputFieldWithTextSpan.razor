@@ -1,0 +1,10 @@
+﻿<p>@displayedText</p>
+
+<input type="text" @bind-value="displayedText" @bind-value:event="oninput"/>
+
+
+@code {
+
+	[Parameter]
+	public string displayedText{ get; set; } = "test";
+}
