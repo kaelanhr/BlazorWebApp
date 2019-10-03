@@ -1,0 +1,23 @@
+﻿@page "/ParentYearComponent"
+
+@using BlazorWebApplication1.Components
+
+<h1>Parent Year Component</h1>
+
+<p>ParentYear: @ParentYear</p>
+
+<ChildYearComponent @bind-Year="ParentYear" />
+
+<button class="btn btn-primary" @onclick="ChangeTheYear">
+	Change Year to 1986
+</button>
+
+@code {
+	[Parameter]
+	public int ParentYear { get; set; } = 1978;
+
+	private void ChangeTheYear()
+	{
+		ParentYear = 1986;
+	}
+}
