@@ -1,5 +1,8 @@
 ﻿@page "/todo"
 
+
+@inherits BlazorSample.TodoBase
+
 <h1>Todo (@todos.Count(todo => !todo.IsDone))</h1>
 
 <ul>
@@ -9,21 +12,6 @@
 	}
 </ul>
 
-<input placeholder="Something todo" @bind="newTodo"/>
+<input placeholder="Something todo" @bind="newTodo" />
 <button @onclick="AddTodo">Add todo</button>
-
-@code {
-	private IList<TodoItem> todos = new List<TodoItem>();
-	private string newTodo;
-
-	private void AddTodo()
-	{
-		// if we have something in the input field, add it to list and 
-		// reset input field
-		if (!string.IsNullOrEmpty(newTodo))
-		{
-			todos.Add(new TodoItem { Title = newTodo });
-			newTodo = string.Empty;
-		}
-	}
-}
+<p>@errors</p>
