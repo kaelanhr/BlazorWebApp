@@ -1,5 +1,6 @@
 ﻿@page "/"
 @using BlazorWebApplication1.Components
+@using System.Collections.Generic
 
 <HeadingComponent />
 
@@ -9,17 +10,17 @@
 
 Welcome to your new app.
 
-<Counter IncrementAmount="10"/>
+<Counter IncrementAmount="10" />
 
-<HelloWorld Name="Kaelan"/>
+<HelloWorld Name="Kaelan" />
 
 <h3>Attributes</h3>
 @*<InputSplatting Type="email"/>
-<InputSplatting Type="password" />*@
+	<InputSplatting Type="password" />*@
 
 <h3>Splattributes</h3>
-<InputSplatting Type="email" class="EmailAddressField"/>
-<InputSplatting Type="password" class="PasswordField"/>
+<InputSplatting Type="email" class="EmailAddressField" />
+<InputSplatting Type="password" class="PasswordField" />
 
 <InputFieldWithTextSpan />
 
@@ -33,3 +34,31 @@ Welcome to your new app.
 <br />
 
 <Passwordfield />
+
+<TableTemplate Items="pets" Context="pet">
+	<TableHeader>
+		<th>ID</th>
+		<th>Name</th>
+	</TableHeader>
+	<RowTemplate>
+		<td>@pet.PetId</td>
+		<td>@pet.Name</td>
+	</RowTemplate>
+</TableTemplate>
+
+
+@code {
+	List<Pets> pets = new List<Pets>();
+
+	protected override void OnInitialized()
+	{
+		var a = new Pets("poodle", "Aryakins");
+		var b = new Pets("poodle", "Buffykins");
+		var c = new Pets("Monster", "Lyrakins");
+		pets.Add(a);
+		pets.Add(b);
+		pets.Add(c);
+	}
+
+
+}
