@@ -1,0 +1,40 @@
+﻿@page "/cascadingvaluesparameterstheme"
+@layout CascadingValuesParametersLayout
+@using BlazorWebApplication1.UIThemeClasses
+
+<h1>Cascading Values & Parameters</h1>
+
+<p>Current count: @currentCount</p>
+
+<p>
+	<button class="btn" @onclick="IncrementCount">
+		Increment Counter (Unthemed)
+	</button>
+</p>
+
+<p>
+	<button class="btn @ChildCascadeParameter1.ButtonClass" @onclick="IncrementCount">
+		Increment Counter (First Param)
+	</button>
+</p>
+
+<p>
+	<button class="btn @ChildCascadeParameter2.ButtonClass" @onclick="IncrementCount">
+		Increment Counter (Second Param)
+	</button>
+</p>
+
+@code {
+	private int currentCount = 0;
+
+	[CascadingParameter(Name = "CascadeParam1")]
+	protected ThemeInfo ChildCascadeParameter1 { get; set; }
+
+	[CascadingParameter(Name = "CascadeParam2")]
+	protected ThemeInfo ChildCascadeParameter2 { get; set; }
+
+	private void IncrementCount()
+	{
+		currentCount++;
+	}
+}

@@ -1,0 +1,24 @@
+﻿@inherits LayoutComponentBase
+@using BlazorWebApplication1.UIThemeClasses
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3">
+			<NavMenu />
+		</div>
+		<div class="col-sm-9">
+			<CascadingValue Value="ParentCascadeParameter1" Name="CascadeParam1">
+				<CascadingValue Value="ParentCascadeParameter2" Name="CascadeParam2">
+					<div class="content px-4">
+						@Body
+					</div>
+				</CascadingValue>
+			</CascadingValue>
+		</div>
+	</div>
+</div>
+
+@code {
+	private ThemeInfo ParentCascadeParameter1 = new ThemeInfo { ButtonClass = "btn-success" };
+	private ThemeInfo ParentCascadeParameter2 = new ThemeInfo { ButtonClass = "btn-other" };
+}
