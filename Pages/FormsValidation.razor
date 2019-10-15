@@ -1,18 +1,19 @@
 ﻿@page "/FormsValidation"
-
+@using BlazorWebApplication1.Components
 
 <h1>Different Forms</h1>
 
 <h2>Simple Form Validation</h2>
 <EditForm Model="@exampleModel" OnValidSubmit="@HandleValidSubmit">
 	<DataAnnotationsValidator />
-	<ValidationSummary />
+	<ValidationMessage For="@(() => exampleModel.Name)" />
+
 
 	<InputText id="name" @bind-Value="@exampleModel.Name" />
 
 	<button type="submit">Submit</button>
 </EditForm>
-
+<br />
 <h2>Bigger Form Validation</h2>
 
 <h3>Starfleet Starship Database</h3>
@@ -63,7 +64,7 @@
 	</p>
 </EditForm>
 
-
+@*<CustomTextInput />*@
 
 @code {
 	private ExampleModel exampleModel = new ExampleModel();
