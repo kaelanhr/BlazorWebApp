@@ -7,6 +7,7 @@ namespace BlazorWebApplication1
 	{
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddSingleton<IDataAccess, DataAccess>();
 		}
 
 		public void Configure(IComponentsApplicationBuilder app)
