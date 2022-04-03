@@ -1,2 +1,3 @@
 # BlazorWebApp
-playing around with a blazor web application
+
+Web Application to demo Blazor WASM.
